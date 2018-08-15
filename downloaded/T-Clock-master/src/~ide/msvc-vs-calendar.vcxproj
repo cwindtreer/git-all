@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1f5284e0-13ef-11e3-8ffd-0800200c9a66}</ProjectGuid>
+    <ProjectName>Calendar</ProjectName>
+    <TargetName>XPCalendar</TargetName>
+    <OutDir>..\..\$(Configuration)\misc\</OutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="msvc-vs-dll.vcxproj">
+      <Project>{6e055518-fdc0-4b59-beb8-60a3874c8f76}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+    <GenerateManifest>false</GenerateManifest>
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="msvc-common.props" />
+  </ImportGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;shell32.lib;user32.lib;gdi32.lib;psapi.lib;comctl32.lib;comdlg32.lib;msimg32.lib;</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common\clock.c" />
+    <ClCompile Include="..\common\control_extensions.c" />
+    <ClCompile Include="..\common\utl.c" />
+    <ClCompile Include="..\common\newapi.c" />
+    <ClCompile Include="..\common\win2k_compat.c" />
+    <ClCompile Include="..\Calendar\DeskCalendar.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common\resource.h" />
+    <ClInclude Include="..\common\globals.h" />
+    <ClInclude Include="..\common\clock.h" />
+    <ClInclude Include="..\common\control_extensions.h" />
+    <ClInclude Include="..\common\utl.h" />
+    <ClInclude Include="..\common\utl_logging.h" />
+    <ClInclude Include="..\common\newapi.h" />
+    <ClInclude Include="..\common\win2k_compat.h" />
+    <ClInclude Include="..\common\version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\common\calendar.inc" />
+    <None Include="..\Calendar\calendar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Calendar\resource.rc" />
+  </ItemGroup>
+</Project>

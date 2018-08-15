@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="AutoVersion (msvc)" />
+		<Option pch_mode="2" />
+		<Option compiler="msvc10" />
+		<Build>
+			<Target title="release">
+				<Option output="../common/AutoVersion" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../.obj/msvc" />
+				<Option type="1" />
+				<Option compiler="msvc10" />
+				<Option parameters="--git . _testver.h" />
+				<Compiler>
+					<Add option="/MT" />
+					<Add option="/O1" />
+				</Compiler>
+				<Linker>
+					<Add option="/DYNAMICBASE:NO" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="/GL" />
+			<Add option="/W4" />
+			<Add option="/wd4706" />
+			<Add option="/wd4428" />
+			<Add option="/D_HAS_EXCEPTIONS=0" />
+		</Compiler>
+		<Linker>
+			<Add option="/LTCG" />
+		</Linker>
+		<Unit filename="../common/autoversion.cpp" />
+		<Unit filename="../common/getopt_tools.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../common/getopt_tools.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

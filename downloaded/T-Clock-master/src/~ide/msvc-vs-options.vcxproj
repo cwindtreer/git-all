@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{d8e4853e-40ac-411f-a120-1e6853061222}</ProjectGuid>
+    <ProjectName>options</ProjectName>
+    <TargetName>Options</TargetName>
+    <OutDir>..\..\$(Configuration)\misc\</OutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="msvc-vs-dll.vcxproj">
+      <Project>{6e055518-fdc0-4b59-beb8-60a3874c8f76}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+    <GenerateManifest>false</GenerateManifest>
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="msvc-common.props" />
+  </ImportGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>advapi32.lib;shell32.lib;user32.lib;gdi32.lib;psapi.lib;comctl32.lib;winhttp.lib;</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common\clock.c" />
+    <ClCompile Include="..\common\utl.c" />
+    <ClCompile Include="..\common\getopt_tools.c" />
+    <ClCompile Include="..\common\messagebox_custom.c" />
+    <ClCompile Include="..\common\newapi.c" />
+    <ClCompile Include="..\common\win2k_compat.c" />
+    <ClCompile Include="..\options\main.c" />
+    <ClCompile Include="..\options\update.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common\globals.h" />
+    <ClInclude Include="..\common\clock.h" />
+    <ClInclude Include="..\common\utl.h" />
+    <ClInclude Include="..\common\utl_logging.h" />
+    <ClInclude Include="..\common\getopt_tools.h" />
+    <ClInclude Include="..\common\messagebox_custom.h" />
+    <ClInclude Include="..\common\newapi.h" />
+    <ClInclude Include="..\common\win2k_compat.h" />
+    <ClInclude Include="..\options\resource.h" />
+    <ClInclude Include="..\options\update.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\options\resource.rc" />
+  </ItemGroup>
+</Project>

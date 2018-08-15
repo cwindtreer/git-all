@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6E055518-FDC0-4B59-BEB8-60A3874C8F76}</ProjectGuid>
+    <ProjectName>DLL</ProjectName>
+    <TargetName Condition="'$(Platform)'=='Win32'">T-Clock</TargetName>
+    <TargetName Condition="'$(Platform)'=='x64'">T-Clock64</TargetName>
+    <OutDir>..\..\$(Configuration)\misc\</OutDir>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(Platform)'=='Win32'">
+    <ProjectReference Include="msvc-vs-autoversion.vcxproj">
+      <Project>{d0b32449-51ee-4dff-9dc8-248adc6bb405}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+    <GenerateManifest>false</GenerateManifest>
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="msvc-common.props" />
+  </ImportGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;shell32.lib;user32.lib;ole32.lib;gdi32.lib;psapi.lib;comctl32.lib</AdditionalDependencies>
+      <ModuleDefinitionFile>..\DLL\DLL.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\DLL\font.c" />
+    <ClCompile Include="..\DLL\format.c" />
+    <ClCompile Include="..\DLL\main.c" />
+    <ClCompile Include="..\DLL\Tclock.c" />
+    <ClCompile Include="..\common\newapi.c" />
+    <ClCompile Include="..\common\utl.c" />
+    <ClCompile Include="..\common\win2k_compat.c" />
+    <ClCompile Include="..\DLL\clock_api.c" />
+    <ClCompile Include="..\DLL\clock_color.c" />
+    <ClCompile Include="..\DLL\clock_utils.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common\version.h" />
+    <ClInclude Include="..\common\resource.h" />
+    <ClInclude Include="..\common\globals.h" />
+    <ClInclude Include="..\common\clock.h" />
+    <ClInclude Include="..\common\newapi.h" />
+    <ClInclude Include="..\common\utl.h" />
+    <ClInclude Include="..\common\utl_logging.h" />
+    <ClInclude Include="..\common\win2k_compat.h" />
+    <ClInclude Include="..\DLL\tcdll.h" />
+    <ClInclude Include="..\DLL\clock_internal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Condition="'$(Platform)'=='Win32'" Include="..\DLL\version.rc" />
+    <ResourceCompile Condition="'$(Platform)'=='x64'" Include="..\DLL\version64.rc" />
+  </ItemGroup>
+</Project>

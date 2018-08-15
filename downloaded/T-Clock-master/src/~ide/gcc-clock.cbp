@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Clock (gcc)" />
+		<Option pch_mode="2" />
+		<Option compiler="i686-w64-mingw32" />
+		<Build>
+			<Target title="release-32">
+				<Option output="../../Release/Clock.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="../.obj/gcc" />
+				<Option type="0" />
+				<Option compiler="i686-w64-mingw32" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-m32" />
+					<Add option="-DNDEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-m32" />
+				</Linker>
+			</Target>
+			<Target title="release-64">
+				<Option output="../../Release/Clock64.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="../.obj64/gcc" />
+				<Option type="0" />
+				<Option compiler="x86_64-w64-mingw32" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-m64" />
+					<Add option="-DNDEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-m64" />
+				</Linker>
+			</Target>
+			<Target title="debug-32">
+				<Option output="../../Debug/Clock.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="../.obj/gcc/dbg" />
+				<Option type="0" />
+				<Option compiler="i686-w64-mingw32" />
+				<Compiler>
+					<Add option="-m32" />
+					<Add option="-Og" />
+					<Add option="-g" />
+					<Add option="-fno-omit-frame-pointer" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-m32" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="objcopy --only-keep-debug ../../Debug/Clock.exe ../../Debug/Clock.dbg" />
+					<Add after="objcopy --strip-debug --strip-unneeded --add-gnu-debuglink=../../Debug/Clock.dbg ../../Debug/Clock.exe" />
+				</ExtraCommands>
+			</Target>
+			<Target title="debug-64">
+				<Option output="../../Debug/Clock64.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="../.obj64/gcc/dbg" />
+				<Option type="0" />
+				<Option compiler="x86_64-w64-mingw32" />
+				<Compiler>
+					<Add option="-m64" />
+					<Add option="-Og" />
+					<Add option="-g" />
+					<Add option="-fno-omit-frame-pointer" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-m64" />
+				</Linker>
+				<ExtraCommands>
+					<Add before='cmd /C &quot;del ..\..\Debug\Crash.log&quot;' />
+					<Add after="objcopy --only-keep-debug ../../Debug/Clock64.exe ../../Debug/Clock64.dbg" />
+					<Add after="objcopy --strip-debug --strip-unneeded --add-gnu-debuglink=../../Debug/Clock64.dbg ../../Debug/Clock64.exe" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="debug" targets="debug-64;debug-32;" />
+			<Add alias="release" targets="release-64;release-32;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-D_UNICODE -DUNICODE" />
+			<Add option="-fno-ident" />
+			<Add option="-Wall" />
+			<Add option="-Werror=declaration-after-statement" />
+			<Add option="-fvisibility=hidden" />
+			<Add option="-ffunction-sections" />
+			<Add option="-fmerge-all-constants" />
+			<Add option="-fno-asynchronous-unwind-tables" />
+			<Add option="-fno-exceptions" />
+			<Add option="-D_POSIX=1" />
+			<Add option="-D_POSIX_C_SOURCE=200112L" />
+			<Add option="-D__STDC_FORMAT_MACROS" />
+			<Add option="-D__USE_MINGW_ANSI_STDIO=0" />
+			<Add option="-D__MINGW_USE_VC2005_COMPAT" />
+			<Add option="-DWINVER=0x0501" />
+			<Add option="-DPSAPI_VERSION=1" />
+			<Add option="-DWIN2K_COMPAT" />
+		</Compiler>
+		<Linker>
+			<Add option="-municode" />
+			<Add option="-static" />
+			<Add option="-Wl,--gc-sections" />
+			<Add option="-mwindows" />
+			<Add library="advapi32" />
+			<Add library="shell32" />
+			<Add library="user32" />
+			<Add library="ole32" />
+			<Add library="gdi32" />
+			<Add library="psapi" />
+			<Add library="comctl32" />
+			<Add library="comdlg32" />
+			<Add library="shlwapi" />
+			<Add library="version" />
+			<Add library="winmm" />
+			<Add library="ws2_32" />
+			<Add library="mpr" />
+			<Add library="uuid" />
+			<Add library="msimg32" />
+			<Add library="dsound" />
+			<Add library="wtsapi32" />
+		</Linker>
+		<ExtraCommands>
+			<Add before="../common/AutoVersion --git . ../common/version.h" />
+		</ExtraCommands>
+		<Unit filename="../Clock/BounceWind.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/ExitWindows.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/PageHotKey.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/PageMisc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/PageMouse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/PageQuicky.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/PageQuickyMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/SNTP.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/StopWatch.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/alarm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/alarmday.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/mouse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/pageabout.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/pagealarm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/pagecolor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/pageformat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/propsheet.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/settings.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/soundselect.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/tClock.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="../Clock/tclock.h" />
+		<Unit filename="../Clock/timer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Clock/version.rc">
+			<Option compilerVar="WINDRES" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../common/HaveSetTimePerms.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/calendar.inc" />
+		<Unit filename="../common/clock.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/clock.h" />
+		<Unit filename="../common/control_extensions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/control_extensions.h" />
+		<Unit filename="../common/globals.h" />
+		<Unit filename="../common/manifest.xml" />
+		<Unit filename="../common/newapi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/newapi.h" />
+		<Unit filename="../common/resource.h" />
+		<Unit filename="../common/utl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/utl.h" />
+		<Unit filename="../common/utl_logging.h" />
+		<Unit filename="../common/version.h" />
+		<Unit filename="../common/win2k_compat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/win2k_compat.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
