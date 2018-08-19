@@ -1,0 +1,3 @@
+[submodule "ityouknow/spring-boot-examples.git"]
+	path = ityouknow/spring-boot-examples.git
+	url = https://gitee.com/ityouknow/spring-boot-examples.git
